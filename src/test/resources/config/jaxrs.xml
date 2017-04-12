@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://cxf.apache.org/jaxrs
+                           http://cxf.apache.org/schemas/jaxrs.xsd">
+    <jaxrs:server id="jaxrsServer" address="/admin">
+        <jaxrs:serviceBeans>
+            <bean id="sfs_testCgService" class="ru.sbrf.swagger.gen.example.TestCgServiceImpl"/>
+            <bean id="sfs_bankAdminCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.bank.BankAdminCgServiceImpl"/>
+            <bean id="sfs_userAdminCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.user.UserAdminCgServiceImpl" />
+            <bean id="sfs_statementAdminCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.statement.StatementAdminCgServiceImpl" />
+            <bean id="sfs_bankingProductSettingsCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.bankingproduct.BankingProductSettingsCgServiceImpl" />
+            <bean id="sfs_auditCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.audit.AuditCgServiceImpl" />
+            <bean id="sfs_logCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.logs.LogCgServiceImpl" />
+            <bean id="sfs_clientAdminCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.client.ClientAdminCgServiceImpl" />
+            <bean id="sfs_clientSecurityAdminCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.client.ClientSecurityAdminCgServiceImpl" />
+            <bean id="sfs_paymentOrderAdminCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.paymentorder.PaymentOrderAdminCgServiceImpl" />
+            <bean id="sfs_versioningAdminCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.versioning.VersioningAdminCgServiceImpl" />
+            <bean id="sfs_sfsConfigAdminCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.config.SfsConfigAdminCgServiceImpl" />
+            <bean id="sfs_serviceAvailabilityAdminCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.serviceavailability.ServiceAvailabilityAdminCgServiceImpl" />
+            <bean id="sfs_productAdminCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.product.ProductAdminCgServiceImpl"/>
+            <bean id="sfs_dictionaryAdminCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.dictionary.DictionaryAdminCgServiceImpl"/>
+            <bean id="sfs_currencyAdminCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.currency.CurrencyAdminCgServiceImpl"/>
+            <bean id="sfs_kavAdminCgService" class="ru.sbrf.ufs.eu.bh.services.coarsegrained.admin.kav.KAVAdminCgServiceImpl"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <bean id="jsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider"/>
+        </jaxrs:providers>
+        <jaxrs:features>
+            <bean id="swagger2Feature" class="org.apache.cxf.jaxrs.swagger.Swagger2Feature">
+                <property name="resourcePackage" value="ru.sbrf."/>
+                <property name="scanAllResources" value="true"/>
+            </bean>
+        </jaxrs:features>
+    </jaxrs:server>
+</beans>
